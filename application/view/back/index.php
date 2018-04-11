@@ -10,6 +10,6 @@
 
 <section class="content container-fluid">
 
-   ¿que quieres tocar hoy?
+   <?= implode(',',\Mini\Libs\Sesion::get('tables')) ?>
 
 </section>

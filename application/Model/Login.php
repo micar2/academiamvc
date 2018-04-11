@@ -33,6 +33,7 @@ class Login
             Sesion::set('user_name', $usuario->name);
             Sesion::set('user_email', $usuario->email);
             Sesion::set('user_rol', $usuario->rol);
+            if ($usuario->rol == 'admin'){self::getMenu();}
             Sesion::set('user_logged_in', true);
             return true;
         } else {
@@ -40,6 +41,22 @@ class Login
         }
     }
 
+    public static function getMenu()
+    {
+        $conn = Database::getInstance()->getDatabase();
+        $ssql = " SHOW TABLES ";
+        $query = $conn->prepare($ssql);
+        $query->execute();
+        $tables = $query->fetchAll();
+
+        foreach ($tables as $table2){
+           foreach ($table2 as $table){
+               Sesion::add('tables', $table);
+           }
+
+        }
+
+    }
 
 	public static function salir()
     {
