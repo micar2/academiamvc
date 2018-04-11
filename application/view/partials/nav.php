@@ -18,7 +18,12 @@
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
                 </li>
-                <?php if (Sesion::get('user_id')){ ?>
+                <?php if (Sesion::get('user_id')){ if (Sesion::get('user_rol')=='admin'){?>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?php echo URL; ?>back">Admin</a>
+                    </li>
+
+                    <?php } ?>
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?php echo URL; ?>login/salir">Logout</a>
                     </li>
@@ -27,9 +32,9 @@
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?php echo URL; ?>login">Login</a>
                     </li>
-<!--                    <li class="nav-item mx-0 mx-lg-1">-->
-<!--                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="">Register</a>-->
-<!--                    </li>-->
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?php echo URL; ?>register">Register</a>
+                    </li>
 
                 <?php } ?>
 

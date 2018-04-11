@@ -11,7 +11,7 @@ class Login
     {
 
         $conn = Database::getInstance()->getDatabase();
-        $ssql = " SELECT email, name, password, id FROM users WHERE email=:email";
+        $ssql = " SELECT email, name, password, id, rol FROM users WHERE email=:email";
         $query = $conn->prepare($ssql);
         $query->bindValue(':email', $datos['email'], PDO::PARAM_STR);
         $query->execute();
@@ -32,6 +32,7 @@ class Login
             Sesion::set('user_id', $usuario->id);
             Sesion::set('user_name', $usuario->name);
             Sesion::set('user_email', $usuario->email);
+            Sesion::set('user_rol', $usuario->rol);
             Sesion::set('user_logged_in', true);
             return true;
         } else {
