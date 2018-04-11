@@ -21,6 +21,7 @@
             <li class="header">HEADER</li>
 
             <?php if(Sesion::get('tables')){
+
                 foreach (Sesion::get('tables') as $table){?>
 
                     <li><a href="<?php echo URL.$table; ?>"><i class="fa fa-link"></i> <span><?= $table ?></span></a></li>
