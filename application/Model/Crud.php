@@ -74,6 +74,18 @@ class Crud
         }
     }
 
+    public static function selectColums($table)
+    {
+        $conn = Database::getInstance()->getDatabase();
+        $ssql = 'SHOW COLUMNS FROM '.$table;
+        $query = $conn->prepare($ssql);
+        $query->execute();
+        $colums = $query->fetchAll();
+
+        return $colums;
+
+
+    }
 
 
 

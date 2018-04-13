@@ -18,6 +18,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories=Crud::getAll('categories');
-        echo $this->view->render('back/categories/index', ['categories' => $categories]);
+        $columns=Crud::selectColums('categories');
+        echo $this->view->render('back/categories/index', ['categories' => $categories, 'columns' => $columns]);
     }
 }

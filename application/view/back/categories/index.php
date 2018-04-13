@@ -26,33 +26,29 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <?php  ?>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th>Engine version</th>
-                                <th>CSS grade</th>
+                                <?php foreach ($columns as $column){
+                                    foreach ($column as $tipe => $item){
+                                        if ($tipe=='Field'){ ?>
+                                            <th><?= $item ?></th>
+                                        <?php }}} ?>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 4.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td> 4</td>
-                                <td>X</td>
-                            </tr>
-
+                                <?php foreach ($categories as $category){ ?>
+                                <tr>
+                                    <?php  foreach ($category as $value){ ?>
+                                            <td><?= $value ?></td>
+                                        <?php } ?>
+                                </tr>
+                                <?php } ?>
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th>Engine version</th>
-                                <th>CSS grade</th>
+                                <?php foreach ($columns as $column){
+                                    foreach ($column as $tipe => $item){
+                                        if ($tipe=='Field'){ ?>
+                                            <th><?= $item ?></th>
+                                        <?php }}} ?>
                             </tr>
                             </tfoot>
                         </table>
