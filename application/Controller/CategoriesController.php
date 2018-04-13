@@ -17,6 +17,6 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        echo $this->view->render('back/tonto');
+        echo $this->view->render('back/categories/index');
     }
 }
