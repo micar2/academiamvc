@@ -35,7 +35,7 @@ class Crud
     {
         $values = '';
         foreach ($dates as $camp => $date){
-            $values.= $camp.'='.$date.', ';
+            $values.= $camp.'="'.$date.'", ';
         }
         $values= trim($values, ', ');
         $conn = Database::getInstance()->getDatabase();
@@ -61,7 +61,11 @@ class Crud
         $values = '';
         $camps = '';
         foreach ($dates as $camp => $date){
-            $values.=$date.', ';
+            if ($camp=='password'){
+                $values.="'".md5($date)."', ";
+            }else{
+                $values.="'".$date."', ";
+            }
             $camps.=$camp.', ';
         }
         $values= trim($values, ', ');

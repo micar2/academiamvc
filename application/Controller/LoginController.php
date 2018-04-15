@@ -22,22 +22,24 @@ class LoginController extends Controller
 
 	public function dologin()
 	{
-        $data=Validation::valAllLoguin($_POST);
-
-        if($_POST['error']=='todo correcto'){
-            if (Login::dologin($data)) {
-                if($origen = Sesion::get('origen')){
-                    Sesion::set('origen', null);
-                    header('location: '.$origen);
-                    exit();
+        if(Validation::valAllLoguin($_POST)){
+            if($_POST['error']=='todo correcto'){
+                if (Login::dologin($_POST)) {
+                    if($origen = Sesion::get('origen')){
+                        Sesion::set('origen', null);
+                        header('location: '.$origen);
+                        exit();
+                    }
+                    echo $this->view->render('login/usuariologueado');
+                } else {
+                    echo $this->view->render('login/index');
                 }
-                echo $this->view->render('login/usuariologueado');
-            } else {
+            }else {
                 echo $this->view->render('login/index');
             }
-        }else {
-            echo $this->view->render('login/index');
         }
+
+
 
 	}
 

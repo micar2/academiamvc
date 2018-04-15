@@ -3,6 +3,7 @@
 namespace Mini\Controller;
 
 use Mini\Core\Controller;
+use Mini\Model\Crud;
 use Mini\Model\Register;
 use Mini\Libs\Sesion;
 use Mini\Model\Validation;
@@ -23,9 +24,9 @@ class RegisterController extends Controller
     public function doregister()
     {
         $data=Validation::valAllRegister($_POST);
-
+echo ($data['error']);
         if($_POST['error']=='todo correcto'){
-            if (Register::doregister($data)) {
+            if (Crud::create('users', $data)) {
 
                 echo $this->view->render('login/index');
 

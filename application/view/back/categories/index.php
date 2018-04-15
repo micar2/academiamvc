@@ -31,14 +31,17 @@
                                         if ($tipe=='Field'){ ?>
                                             <th><?= $item ?></th>
                                         <?php }}} ?>
+                                <th>options</th>
                             </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($categories as $category){ ?>
                                 <tr>
-                                    <?php  foreach ($category as $value){ ?>
+                                    <?php  foreach ($category as $camp => $value){
+                                        if($camp=='id'){$id=$value;}?>
                                             <td><?= $value ?></td>
                                         <?php } ?>
+                                    <td><a href="categories/update/">update</a><br><a href="categories/delete?id=<?=$id?>">delete</a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -49,6 +52,7 @@
                                         if ($tipe=='Field'){ ?>
                                             <th><?= $item ?></th>
                                         <?php }}} ?>
+                                <th>options</th>
                             </tr>
                             </tfoot>
                         </table>

@@ -17,7 +17,12 @@ class BackController extends Controller
 
     public function index()
     {
-        echo $this->view->render('back/index');
+        if(Back::adminIsLoggedIn()){
+            echo $this->view->render('back/index');
+        }else{
+            echo $this->view->render('home/index');
+        }
+
     }
 
 

@@ -12,6 +12,7 @@ class Register
 
         $conn = Database::getInstance()->getDatabase();
         $ssql = " INSERT INTO users(name, email, password) VALUES (:name, :email, :password)";
+        echo ($ssql);
         $query = $conn->prepare($ssql);
         $query->bindValue(':name', $datos['name'], PDO::PARAM_STR);
         $query->bindValue(':email', $datos['email'], PDO::PARAM_STR);

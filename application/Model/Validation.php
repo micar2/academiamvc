@@ -32,6 +32,7 @@ class Validation
         }
         if ($total==0){
             $_POST['error']='todo correcto';
+            unset($data['confPassword']);
             return $data;
         }else{
             $_POST['error']='hay errores';
@@ -48,9 +49,6 @@ class Validation
         if (isset($data['password'])) {
             self::valPasswordLoguin($data['password']);
         }
-//        if (isset($data['tipoUsuario'])) {
-//            self::valTipoUsuario($data['tipoUsuario']);
-//        }
 
         foreach ($data as $index => $datum) {
             if (!empty($_POST['error_'.$index])){
