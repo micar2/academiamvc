@@ -68,6 +68,7 @@ class Crud
         $camps= trim($camps, ', ');
         $conn = Database::getInstance()->getDatabase();
         $ssql = 'INSERT INTO '.$table.' ('.$camps.') VALUES ('.$values.')';
+        echo ($ssql);
         $query = $conn->prepare($ssql);
         if($query->execute()){
             return true;

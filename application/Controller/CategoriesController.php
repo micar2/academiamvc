@@ -21,4 +21,22 @@ class CategoriesController extends Controller
         $columns=Crud::selectColums('categories');
         echo $this->view->render('back/categories/index', ['categories' => $categories, 'columns' => $columns]);
     }
+
+    public function create()
+    {
+        if (Sesion::userIsLoggedIn()){
+            if ($_POST){
+                if(Crud::create('categories', $_POST)){
+                    unset($_POST);
+                    Self::index();
+                }
+            }else{
+                $columns=Crud::selectColums('categories');
+                echo $this->view->render('back/categories/create', ['columns' => $columns]);
+            }
+        }else{
+            echo $this->view->render('/home');
+        }
+
+    }
 }
