@@ -41,12 +41,32 @@ class CategoriesController extends Controller
 
     }
 
-    public function delete()
+    public function delete($id = 0)
     {
         if (Back::adminIsLoggedIn()){
-            if(Crud::delete('categories', $_GET['id'])){
-                echo $this->view->render('back/categories/index');
+            if(Crud::delete('categories', $id)){
+                self::index();
             }
+        }else{
+            echo $this->view->render('home/index');
+        }
+    }
+
+    public function update($id = 0)
+    {
+        if (Back::adminIsLoggedIn()){
+            if ($_POST){
+                    if(Crud::update('categories',$_POST)){
+                        unset($_POST);
+                        self::index();
+                    }
+            }else{
+                if(Crud::actPost('categories',$id)){
+                    $columns=Crud::selectColums('categories');
+                    echo $this->view->render('back/categories/update',['columns'=>$columns ]);
+                }
+            }
+
         }else{
             echo $this->view->render('home/index');
         }

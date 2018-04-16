@@ -41,7 +41,7 @@
                                         if($camp=='id'){$id=$value;}?>
                                             <td><?= $value ?></td>
                                         <?php } ?>
-                                    <td><a href="categories/update/">update</a><br><a href="categories/delete?id=<?=$id?>">delete</a></td>
+                                    <td><a href="categories/update/<?=$id?>">update</a><br><a href="categories/delete/<?=$id?>">delete</a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>

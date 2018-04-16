@@ -35,7 +35,9 @@ class Crud
     {
         $values = '';
         foreach ($dates as $camp => $date){
-            $values.= $camp.'="'.$date.'", ';
+            if ($camp!='id'){
+                $values.= $camp.'="'.$date.'", ';
+            }
         }
         $values= trim($values, ', ');
         $conn = Database::getInstance()->getDatabase();
@@ -44,6 +46,15 @@ class Crud
         if($query->execute()){
             return true;
         }
+    }
+
+    public static function actPost($table, $date)
+    {
+        $dates = self::getWhere($date,'id',$table);
+        foreach ($dates as $key => $date){
+            $_POST[$key] = $date;
+        }
+        return true;
     }
 
     public static function delete($table, $id)
